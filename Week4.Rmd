@@ -1,0 +1,54 @@
+---
+title: "Earthquakes in Fiji"
+author: "Ivan Arambula"
+date: "3/7/2019"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Motivation
+
+I found very interesting to experiment in how to display maps with data.
+
+This Application was develop using Shiny in combination with Leaflet, the inspiration was based on an example of the maps using a dataset called quakes.
+
+For more examples visit: <https://shiny.rstudio.com>.
+
+There are multiple ways of how to use and enhance your R functionality with Shiny.
+
+## UI code
+
+One key piece was to use stylesheets (css)
+
+```{r, echo=TRUE,eval=FALSE}
+shinyUI(bootstrapPage(
+    tags$style(type = "text/css", "html, body {width:100%;height:100%}"),
+    leafletOutput("map", width = "100%", height = "100%"),
+    absolutePanel(id = "controls", 
+                  style="border: 1px solid rgba(0, 0, 255, 0.09);
+                         background: rgba(0, 0, 255, 0.09);",
+                  div(style="padding:20px",h3("Earthquakes in Fiji"),
+                      h6("by Magnitude (drag me)"),
+                      sliderInput("range", "", min(quakes$mag), 
+                                  max(quakes$mag),
+                                  value = range(quakes$mag), step = 0.1
+                      ),
+                      div(style="overflow-y:scroll;height:220px",
+                      tableOutput('table'))
+                  ))))
+```
+
+## Details of quake dataset
+
+There are two clear planes of seismic activity. One is a major plate junction; the other is the Tonga trench off New Zealand. These data constitute a subsample from a larger dataset of containing 5000 observations.
+
+The application is running on <https://lengoman.shinyapps.io/EarthquakeInFiji/>.
+
+And the source code can be found on github <https://github.com/lengoman/EarthquakesInFiji>.
+
+## Thank you
+
+I appreciate your time!
