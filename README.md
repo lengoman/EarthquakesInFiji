@@ -14,4 +14,6 @@ There are two clear planes of seismic activity. One is a major plate junction; t
 
 The application is running on <https://lengoman.shinyapps.io/EarthquakeInFiji/>.
 
+The presentation can be found on <https://rpubs.com/lengoman/EarhquakeInFiji>.
+
 ## Thank you!
